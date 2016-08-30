@@ -78,7 +78,8 @@ $(document).ready(function() {
                 <p>${name}</p>
               </div>
                 <div class="card-action">
-  <a class="modal-trigger waves-effect waves-light btn #795548 brown" href="#modal2">Learn more!</a>
+  <a class="modal-trigger waves-effect waves-light btn #795548 brown" href="#modal${i}">Learn more!</a>
+
   <div id="modal${i}" class="modal modal-fixed-footer">
     <div class="modal-content">
     <div class="card">
