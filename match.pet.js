@@ -1,7 +1,10 @@
 $(document).ready(function() {
   'use strict'
+  $('.modal-trigger').leanModal();
 
-  // console.log("ready!");
+
+  let offset = 0;
+
   $('.btn').on('click', function(event) {
     if ($('input[name=zipCode').val().length === 0) {
       Materialize.toast('Please enter a zip code.', 4000);
@@ -14,52 +17,59 @@ $(document).ready(function() {
       event.preventDefault();
     }
 
-    var zipCode = $('input[name=zipCode').val()
-    var pets = $('input[name=pets').val()
+    const zipCode = $('input[name=zipCode').val()
+    const pets = $('input[name=pets').val()
 
-    $.getJSON("http://api.petfinder.com/pet.find?format=json&key=802794cfd500084ba38b444334194949&location=" + zipCode + "&animal=" + pets + "&callback=?")
+
+    $.getJSON("http://api.petfinder.com/pet.find?format=json&key=802794cfd500084ba38b444334194949&location=" + zipCode + "&animal=" + pets + "&offset=" + offset + "&count=24&callback=?")
     .done(function(data) {
-      let petList = data.petfinder.pets.pet
+      const petList = data.petfinder.pets.pet
 
-      let mainPet = petList[0];
-      let mainName = mainPet.name.$t;
-      let mainDescription = mainPet.description.$t;
-      let mainEmail = mainPet.contact.email.$t;
-      let mainTempMedia = mainPet.media.photos.photo[0].$t;
-      let mainMedia = mainTempMedia.split('&');
-      let mainImage = mainMedia[0] + '.jpg'
+      offset = data.petfinder.lastOffset.$t
 
-      $('#firstPetContainer').append(`<div class="col s12 m12">
-      <h5 class="header"></h5>
-      <div class="card horizontal">
-      <div class="card-image">
-      <img src ="${mainImage}">
-      <span class="card-title">${mainName}</span>
-      </div>
-      <div class="card-stacked">
-      <div class="card-content">
-      <p>${mainDescription}</p>
-      </div>
-      <div class="card-action">
-      <a href="mailto: ${mainEmail}">Email Us!</a>
-      </div>
-      </div>
-      </div>
-      </div>
-      `)
+//       const mainPet = petList[0];
+//       const mainName = mainPet.name.$t;
+//       const mainDescription = mainPet.description.$t;
+//       const mainEmail = mainPet.contact.email.$t;
+//       const mainTempMedia = mainPet.media.photos.photo[0].$t;
+//       const mainMedia = mainTempMedia.split('&');
+//       const mainImage = mainMedia[0] + '.jpg'
+//
+//       $('#firstPetContainer').append(`<div class="col s12 m12">
+//       <h5 class="header"></h5>
+//       <div class="card horizontal z-depth-5 hoverable">
+//         <div class="card-image">
+//           <img src ="${mainImage}">
+//             <span class="card-title">${mainName}</span>
+//       </div>
+//       <div class="card-stacked">
+//       <div class="card-content">
+//       <h5>${mainDescription}</h5>
+//       </div>
+//       <div class="card-action">
+//       <a href="mailto: ${mainEmail}">Email The Shelter!</a>
+//       </div>
+//     </div>
+//   </div>
+// </div>
+//       `)
 
-      for(var i=1; i <petList.length; i++) {
-        let pet = petList[i]
-        let name = pet.name.$t;
-        let description = pet.description.$t;
-        let email = pet.contact.email.$t;
-        let tempMedia = pet.media.photos.photo[0].$t;
-        let media = tempMedia.split('&')
-        let image = media[0] + '.jpg'
+      for (let i = 0; i < petList.length; i++) {
+        const pet = petList[i]
+        const name = pet.name.$t;
+        const description = pet.description.$t;
+        const email = pet.contact.email.$t;
+        const phone = pet.contact.phone.$t;
+        const age = pet.age.$t
+        const breed = pet.breeds.breed.$t
+        const sex = pet.sex.$t
+        const tempMedia = pet.media.photos.photo[0].$t;
+        const media = tempMedia.split('&')
+        const image = media[0] + '.jpg'
 
-      $('#petContainer').append(`
+        $('#petContainer').append(`
           <div class="col s3 m3">
-            <div class="card small z-depth-5">
+            <div class="card small z-depth-4">
               <div class="card-image">
                 <img src="${image}">
                   <span class="card-title"></span>
@@ -68,17 +78,32 @@ $(document).ready(function() {
                 <p>${name}</p>
               </div>
                 <div class="card-action">
-                  <a href="mailto:${email}">Email us!</a>
+  <a class="modal-trigger waves-effect waves-light btn #795548 brown" href="#modal2">Learn more!</a>
+  <div id="modal${i}" class="modal modal-fixed-footer">
+    <div class="modal-content">
+    <div class="card">
+    <div class="card-image">
+        <img src=${image}>
+      </div>
+      </div>
+      <h4>${name}: ${age} ${breed} ${sex}</h4>
+      <p>${description}</p>
+      <h5>Please contact the shelter:  ${email} ${phone}</h5>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat #795548">X</a>
+    </div>
+  </div>
               </div>
             </div>
           </div>
           `)
-        }
+      }
+      $('.modal-trigger').leanModal();
+
     console.log('data', data)
     })
     .fail(function() {
-      })
+    })
   })
 })
-
-// })

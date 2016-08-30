@@ -1,13 +1,14 @@
 module.exports = {
   extends: [
     'ryansobol/browser',
-    'ryansobol/es5',
-    'ryansobol/jquery'
-    'rysobal/materialize'
+    'ryansobol/es6',
+    'ryansobol/jquery',
+
   ],
   rules: {
     "semi": "off",
     "quotes": "off"
+
   }
 
 };
