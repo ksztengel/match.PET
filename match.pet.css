@@ -13,7 +13,7 @@ body {
   }
 
   /* label focus color */
-   .input-field input[type=text]:focus + label {
+   .input-field input[type=tel]:focus + label {
      color: #e91e63;
   }
     /* icon prefix focus color */
@@ -23,15 +23,15 @@ body {
   /* label color */
    .input-field label {
      color: #795548;
-   }
+  }
 
    /* label underline focus color */
-   .input-field input[type=text]:focus {
+   .input-field input[type=tel]:focus {
      border-bottom: 1px solid #e91e63;
      box-shadow: 0 1px 0 0 #e91e63;
    }
    /* valid color */
-   .input-field input[type=text].valid {
+   .input-field input[type=tel].valid {
      border-bottom: 1px solid #e91e63;
      box-shadow: 0 1px 0 0 #e91e63;
    }
@@ -41,16 +41,11 @@ body {
      color: #e91e63;
    }
 
-    #popUp {
-      height: auto;
-      width: auto;
+  #popUp {
+    height: auto;
+    width: auto;
   }
 
   .dropdown-content li>span {
     color: #e91e63;
-}
-
-#OD{
- width: auto;
-
 }
