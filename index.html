@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
   <head>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
       <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
       <link rel="stylesheet" href="./match.pet.css">
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title></title>
   </head>
   <nav>
@@ -22,20 +22,42 @@
 <main>
   <div class = "container">
     <div class = "row">
-      <form class="col s6">
-          <div class="input-field col s9">
+      <form class="col s12">
+          <div class="input-field col s3">
             <i class="material-icons prefix iconColor">home</i>
             <input id="icon_prefix" name = "zipCode" type="text" class="validate">
-            <label for="icon_prefix">zip code</label>
+            <label for="icon_prefix">* zip code</label>
           </div>
-      </form>
-      <form class="col s6">
-          <div class="input-field col s9">
+      <!-- </form>
+      <form class="col s8"> -->
+          <div class="input-field col s3">
             <i class="material-icons prefix iconColor">pets</i>
             <select id="pets">
-      <option value="" disabled selected>Please choose dog or cat</option>
+      <option value="" disabled selected>* dog or cat</option>
       <option value="dog">dog</option>
       <option value="cat">cat</option>
+    </select>
+    <label></label>
+            <label for="icon_prefix"></label>
+          </div>
+          <div class="input-field col s3">
+            <i class="material-icons prefix iconColor"></i>
+            <select id = "sex">
+      <option value="" disabled selected>male or female</option>
+      <option value="M">M</option>
+      <option value="F">F</option>
+    </select>
+    <label></label>
+            <label for="icon_prefix"></label>
+          </div>
+          <div class="input-field col s3">
+            <i class="material-icons prefix iconColor"></i>
+            <select id="age">
+      <option value="" disabled selected>age</option>
+      <option value="Baby">Baby</option>
+      <option value="Young">Young</option>
+      <option value="Adult">Adult</option>
+      <option value="Senior">Senior</option>
     </select>
     <label></label>
             <label for="icon_prefix"></label>

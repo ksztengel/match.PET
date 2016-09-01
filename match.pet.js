@@ -12,12 +12,8 @@ $(document).ready(function() {
       if ($('input[name=zipCode').val().length === 0) {
         Materialize.toast('Please enter a zip code.', 4000);
       }
-      else if ($('#pets').val() === null) {
+      if ($('#pets').val() === null) {
         Materialize.toast('Please choose dog or cat.', 4000);
-      }
-      else {
-        Materialize.toast('Thank you!', 4000)
-        event.preventDefault();
       }
       dataCall()
     })
@@ -26,10 +22,19 @@ $(document).ready(function() {
   function dataCall() {
     const zipCode = $('input[name=zipCode').val()
     const pets = $('#pets').val()
+    const sex = $('#sex').val()
+    const age = $('#age').val()
 
-    console.log(pets);
+    let url = "http://api.petfinder.com/pet.find?format=json&key=802794cfd500084ba38b444334194949&location=" + zipCode + "&animal=" + pets + "&offset=" + offset + "&count=24&callback=?"
 
-    $.getJSON("http://api.petfinder.com/pet.find?format=json&key=802794cfd500084ba38b444334194949&location=" + zipCode + "&animal=" + pets + "&offset=" + offset + "&count=24&callback=?")
+    if (sex) {
+      url += "&sex=" + sex
+    }
+    if (age) {
+    url+="&age=" + age
+    }
+
+    $.getJSON(url)
     .done(function(data) {
       console.log(data);
       const petList = data.petfinder.pets.pet
@@ -50,12 +55,18 @@ $(document).ready(function() {
   }
 
   function renderData(pet, i, image) {
-    // if(!pet.breeds.breed.$t){
-    //   pet.breeds.breed.$t ='no breed information available'
-    // }
-    // if(!pet.contact.phone.$t){
-    //   pet.contact.phone.$t ='no phone number available'
-    // }
+    if (!pet.breeds.breed.$t) {
+      pet.breeds.breed.$t = 'no breed information available'
+    }
+    if (!pet.contact.phone.$t) {
+      pet.contact.phone.$t = 'no phone number available'
+    }
+    if (!pet.description.$t) {
+      pet.description.$t = 'no description available'
+    }
+    if (!image) {
+      image = 'no photo available'
+    }
     $('#petContainer').append(`
       <div class="col s3 m3">
       <div class="card small z-depth-4">
@@ -75,7 +86,7 @@ $(document).ready(function() {
       <img src=${image}>
       </div>
       </div>
-      <h4>${pet.name.$t}: ${pet.age.$t} ${pet.breeds.breed.$t} (${pet.sex.$t})</h4>
+      <h4>${pet.name.$t}: ${pet.age.$t} - ${pet.breeds.breed.$t} - (${pet.sex.$t})</h4>
       <p>${pet.description.$t}</p>
       <h5>Please contact the shelter:  ${pet.contact.email.$t}</h5>
       <h5>${pet.contact.phone.$t}</h5>
