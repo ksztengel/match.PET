@@ -7,7 +7,7 @@ $(document).ready(function() {
   let offset = 0;
 
   function addSubmitListener() {
-    $('#matchButton').on('click', function(event) {
+    $('#matchButton').on('click', function() {
       $("#petContainer").empty()
       if ($('input[name=zipCode').val().length === 0) {
         Materialize.toast('Please enter a zip code.', 4000);

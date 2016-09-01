@@ -8,7 +8,7 @@ body {
     flex: 1 0 auto;
   }
 
-  .iconColor{
+  .iconColor {
     color: #795548;
   }
 
@@ -29,23 +29,23 @@ body {
    .input-field input[type=tel]:focus {
      border-bottom: 1px solid #e91e63;
      box-shadow: 0 1px 0 0 #e91e63;
-   }
+  }
    /* valid color */
    .input-field input[type=tel].valid {
      border-bottom: 1px solid #e91e63;
      box-shadow: 0 1px 0 0 #e91e63;
-   }
+  }
 
    /* icon prefix focus color */
    .input-field .prefix.active {
      color: #e91e63;
-   }
-
-  #popUp {
-    height: auto;
-    width: auto;
   }
 
   .dropdown-content li>span {
     color: #e91e63;
-}
+  }
+
+  #popUp {
+  height: auto;
+  width: auto;
+  }
