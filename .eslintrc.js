@@ -7,7 +7,10 @@ module.exports = {
   ],
   rules: {
     "semi": "off",
-    "quotes": "off"
+    "quotes": "off",
+    "prefer-arrow-callback": "off",
+    "prefer-template": "off",
+    "max-len": "off"
 
   }
 

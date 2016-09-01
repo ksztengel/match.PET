@@ -36,7 +36,6 @@ $(document).ready(function() {
 
     $.getJSON(url)
     .done(function(data) {
-      console.log(data);
       const petList = data.petfinder.pets.pet
 
       offset = data.petfinder.lastOffset.$t
@@ -92,7 +91,7 @@ $(document).ready(function() {
       <h5>${pet.contact.phone.$t}</h5>
       </div>
       <div class="modal-footer">
-      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat "><h6>x</h6></a>
+      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat "><h5>x</h5></a>
       </div>
       </div>
       </div>
