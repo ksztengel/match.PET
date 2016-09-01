@@ -31,7 +31,7 @@ $(document).ready(function() {
       url += "&sex=" + sex
     }
     if (age) {
-    url+="&age=" + age
+      url += "&age=" + age
     }
 
     $.getJSON(url)
@@ -68,7 +68,7 @@ $(document).ready(function() {
       image = 'no photo available'
     }
     $('#petContainer').append(`
-      <div class="col s3 m3">
+      <div class="col s12 m3 l3">
       <div class="card small z-depth-4">
       <div class="card-image">
       <img src="${image}">
