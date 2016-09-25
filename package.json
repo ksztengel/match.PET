@@ -1,0 +1,29 @@
+{
+  "name": "catordog.pet",
+  "version": "1.0.0",
+  "description": "Q1 project - pet adoption site ksztengel-matchpet-final.surge.sh",
+  "main": ".eslintrc.js",
+  "dependencies": {
+    "babel-cli": "^6.14.0"
+  },
+  "scripts": {
+    "build": "./node_modules/.bin/babel src -d dist"
+  },
+  "scripts": {
+    "build": "babel --presets es2015 src -d lib"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ksztengel/match.PET.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ksztengel/match.PET/issues"
+  },
+  "homepage": "https://github.com/ksztengel/match.PET#readme",
+  "devDependencies": {
+    "babel-polyfill": "^6.13.0",
+    "babel-preset-es2015": "^6.14.0"
+  }
+}

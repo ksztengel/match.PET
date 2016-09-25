@@ -9,7 +9,7 @@ $(document).ready(function() {
   function addSubmitListener() {
     $('#matchButton').on('click', function() {
       $("#petContainer").empty()
-      if ($('input[name=zipCode').val().length === 0) {
+      if ($('input[name=zipCode]').val().length === 0) {
         Materialize.toast('Please enter a zip code.', 4000);
       }
       if ($('#pets').val() === null) {
@@ -20,7 +20,7 @@ $(document).ready(function() {
   }
 
   function dataCall() {
-    const zipCode = $('input[name=zipCode').val()
+    const zipCode = $('input[name=zipCode]').val()
     const pets = $('#pets').val()
     const sex = $('#sex').val()
     const age = $('#age').val()
